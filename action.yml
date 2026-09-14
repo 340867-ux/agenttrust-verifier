@@ -5,19 +5,25 @@ branding:
 inputs:
   api_url:
     description: AgentTrust Ledger API base URL
-    required: true
+    required: false
+    default: https://agenttrust-ledger.340867.workers.dev
+  policy_file:
+    description: Optional agenttrust.yml policy file
+    required: false
   kind:
-    description: npm, pypi, or github
-    required: true
+    description: mcp, npm, pypi, or github (legacy single-component mode)
+    required: false
   component:
-    description: Package name or owner/repo
-    required: true
+    description: Component ID (legacy single-component mode)
+    required: false
   expected_hash:
-    description: Optional trusted snapshot SHA-256
+    description: Trusted snapshot SHA-256 (legacy single-component mode)
     required: false
 outputs:
   current_hash:
-    description: Current normalized snapshot SHA-256
+    description: Current hash in legacy single-component mode
+  policy_passed:
+    description: true when all enforced policy checks passed
 runs:
   using: node20
   main: action.mjs

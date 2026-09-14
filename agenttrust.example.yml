@@ -1,0 +1,8 @@
+version: 1
+apiBase: https://agenttrust-ledger.340867.workers.dev
+failOn: high
+onMissingBaseline: fail
+components:
+  - kind: mcp
+    id: ai.adako/ads
+    trustedHash: 2dc7c450903e5851fea260cfaccdbca89f6a6764de196066ac77298bfca2fd3e

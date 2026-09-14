@@ -30,7 +30,7 @@ See `SPEC.md` for the canonicalization and receipt format.
 Pin a component to the snapshot you reviewed:
 
 ```yaml
-- uses: 340867-ux/agenttrust-verifier@main
+- uses: 340867-ux/agenttrust-verifier@v1
   with:
     api_url: https://YOUR-AGENTTRUST-WORKER.workers.dev
     kind: npm
@@ -39,3 +39,28 @@ Pin a component to the snapshot you reviewed:
 ```
 
 If the normalized snapshot changes, the action exits non-zero and prints both the trusted and current hashes. Omit `expected_hash` to discover the current hash without enforcing a gate.
+
+## Policy mode
+
+For severity-aware CI, commit an `agenttrust.yml` file and use policy mode:
+
+```yaml
+- uses: 340867-ux/agenttrust-verifier@v1
+  with:
+    policy_file: agenttrust.yml
+```
+
+Example policy:
+
+```yaml
+version: 1
+apiBase: https://agenttrust-ledger.340867.workers.dev
+failOn: high
+onMissingBaseline: fail
+components:
+  - kind: mcp
+    id: ai.adako/ads
+    trustedHash: 2dc7c450903e5851fea260cfaccdbca89f6a6764de196066ac77298bfca2fd3e
+```
+
+The Action calls the public historical compare API. A low/medium drift is reported without failing when `failOn: high`; high/critical drift fails the workflow. The older single-component `kind` + `component` + `expected_hash` mode remains supported and fails on any hash change.
