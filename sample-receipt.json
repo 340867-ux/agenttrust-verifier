@@ -1,0 +1,15 @@
+{
+  "payload": {
+    "component": {
+      "ecosystem": "npm",
+      "id": "@modelcontextprotocol/sdk",
+      "version": "1.30.0"
+    },
+    "keyId": "ed25519:c4d9d804a2b89675",
+    "observedAt": "2026-09-14T12:00:00.000Z",
+    "schemaVersion": 1,
+    "snapshotHash": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "algorithm": "Ed25519",
+  "signature": "a4pxqteGA6nJDTWYBi7Ug7Dvwtavbw_z2iGaAv1r9FcR9tkJ67lMYc5zg5tCV88GELsXzPgzcCsZmLKhwru7Ag"
+}
