@@ -1,0 +1,23 @@
+name: AgentTrust Check
+branding:
+  icon: shield
+  color: green
+inputs:
+  api_url:
+    description: AgentTrust Ledger API base URL
+    required: true
+  kind:
+    description: npm, pypi, or github
+    required: true
+  component:
+    description: Package name or owner/repo
+    required: true
+  expected_hash:
+    description: Optional trusted snapshot SHA-256
+    required: false
+outputs:
+  current_hash:
+    description: Current normalized snapshot SHA-256
+runs:
+  using: node20
+  main: action.mjs

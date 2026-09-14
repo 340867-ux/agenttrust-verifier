@@ -24,3 +24,18 @@ Its SHA-256 DER fingerprint is:
 `c4d9d804a2b89675fb5a6d5bf934c64bf7e7f5070469cd971018ffd57e83a922`
 
 See `SPEC.md` for the canonicalization and receipt format.
+
+## GitHub Action
+
+Pin a component to the snapshot you reviewed:
+
+```yaml
+- uses: 340867-ux/agenttrust-verifier@main
+  with:
+    api_url: https://YOUR-AGENTTRUST-WORKER.workers.dev
+    kind: npm
+    component: '@modelcontextprotocol/sdk'
+    expected_hash: '<trusted SHA-256>'
+```
+
+If the normalized snapshot changes, the action exits non-zero and prints both the trusted and current hashes. Omit `expected_hash` to discover the current hash without enforcing a gate.
